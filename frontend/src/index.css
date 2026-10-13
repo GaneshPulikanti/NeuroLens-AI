@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #f7f9fc;
+    --bg-card: #ffffff;
+    --bg-muted: #f1f5f9;
+    --text-primary: #101827;
+    --text-secondary: #64748b;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-subtle: #cbd5e1;
+    --primary: #3b82f6;
+    --primary-hover: #2563eb;
+    --teal: #14b8a6;
+    --navy: #101827;
+    --slate: #172235;
+    --accent-red: #ef4444;
+    --accent-amber: #f59e0b;
+    --accent-emerald: #10b981;
+  }
+
+  .dark {
+    --bg-main: #0c121e;
+    --bg-card: #141d2e;
+    --bg-muted: #1c273c;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --border-color: #26354a;
+    --border-subtle: #33445e;
+    --primary: #3b82f6;
+    --primary-hover: #60a5fa;
+    --teal: #14b8a6;
+    --navy: #080d17;
+    --slate: #0f172a;
+    --accent-red: #f87171;
+    --accent-amber: #fbbf24;
+    --accent-emerald: #34d399;
+  }
+
+  * {
+    border-color: var(--border-color);
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scientific scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #334155;
+}
+
+/* Medical Imaging Canvas */
+.medical-canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Print Styles for Research Reports */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+}

@@ -1,0 +1,28 @@
+# Python & Environments
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Large Imaging & Datasets (never commit raw medical data to git)
+backend/data/studies/*
+!backend/data/studies/.gitkeep
+backend/data/isles/*
+!backend/data/isles/.gitkeep
+*.nii
+*.nii.gz
+*.dcm
+
+# System & IDE
+.DS_Store
+.env
+.idea/
+.vscode/

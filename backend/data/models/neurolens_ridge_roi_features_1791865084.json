@@ -1,0 +1,156 @@
+{
+  "model_version": "neurolens_ridge_roi_features_1791865084",
+  "model_type": "ridge",
+  "feature_set": "roi_features",
+  "features_used": [
+    "total_lesion_vol_cm3",
+    "laterality_index",
+    "broca_load_pct",
+    "wernicke_load_pct",
+    "parietal_conduction_pct",
+    "motor_articulatory_pct",
+    "L_IFG_opercularis_pct",
+    "L_IFG_triangularis_pct",
+    "L_STG_post_pct",
+    "L_MTG_post_pct",
+    "L_SMG_pct",
+    "L_AG_pct",
+    "L_Precentral_pct",
+    "L_Insula_pct",
+    "cog_x_mni",
+    "cog_y_mni",
+    "cog_z_mni"
+  ],
+  "trained_timestamp": "2026-10-13 04:18:04 UTC",
+  "n_participants": 245,
+  "n_splits": 3,
+  "random_seed": 42,
+  "metrics": {
+    "mae": 4.98,
+    "rmse": 7.37,
+    "r2": 0.932,
+    "pearson_r": 0.966,
+    "p_value": 1.7123664789582292e-144
+  },
+  "residual_std": 6.88,
+  "ci_95_margin": 13.48,
+  "baselines": {
+    "dummy_mean": {
+      "mae": 24.84,
+      "rmse": 28.36,
+      "r2": -0.003,
+      "pearson_r": -0.051,
+      "p_value": 0.42536351541859224
+    },
+    "lesion_volume_only": {
+      "mae": 5.05,
+      "rmse": 7.3,
+      "r2": 0.934,
+      "pearson_r": 0.966
+    }
+  },
+  "feature_importance": [
+    {
+      "feature": "total_lesion_vol_cm3",
+      "importance_weight": 18.262,
+      "coefficient": -18.262,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "L_Precentral_pct",
+      "importance_weight": 2.699,
+      "coefficient": -2.699,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "L_IFG_triangularis_pct",
+      "importance_weight": 2.5907,
+      "coefficient": -2.5907,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "L_STG_post_pct",
+      "importance_weight": 2.3427,
+      "coefficient": -2.3427,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "L_AG_pct",
+      "importance_weight": 2.1991,
+      "coefficient": 2.1991,
+      "direction": "Preserves WAB-AQ"
+    },
+    {
+      "feature": "L_SMG_pct",
+      "importance_weight": 1.9994,
+      "coefficient": -1.9994,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "broca_load_pct",
+      "importance_weight": 1.4633,
+      "coefficient": -1.4633,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "motor_articulatory_pct",
+      "importance_weight": 1.2053,
+      "coefficient": -1.2053,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "cog_y_mni",
+      "importance_weight": 1.1255,
+      "coefficient": 1.1255,
+      "direction": "Preserves WAB-AQ"
+    },
+    {
+      "feature": "wernicke_load_pct",
+      "importance_weight": 0.8688,
+      "coefficient": -0.8688,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "L_MTG_post_pct",
+      "importance_weight": 0.5946,
+      "coefficient": 0.5946,
+      "direction": "Preserves WAB-AQ"
+    },
+    {
+      "feature": "laterality_index",
+      "importance_weight": 0.4737,
+      "coefficient": -0.4737,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "L_Insula_pct",
+      "importance_weight": 0.3797,
+      "coefficient": 0.3797,
+      "direction": "Preserves WAB-AQ"
+    },
+    {
+      "feature": "L_IFG_opercularis_pct",
+      "importance_weight": 0.3215,
+      "coefficient": -0.3215,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "cog_x_mni",
+      "importance_weight": 0.312,
+      "coefficient": 0.312,
+      "direction": "Preserves WAB-AQ"
+    },
+    {
+      "feature": "cog_z_mni",
+      "importance_weight": 0.0853,
+      "coefficient": -0.0853,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    },
+    {
+      "feature": "parietal_conduction_pct",
+      "importance_weight": 0.0098,
+      "coefficient": -0.0098,
+      "direction": "Decreases WAB-AQ (Impairs)"
+    }
+  ]
+}
