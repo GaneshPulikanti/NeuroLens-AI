@@ -7,7 +7,10 @@ import {
   StudySummary,
 } from '../types';
 
-const BASE_URL = '/api';
+const RAW_URL = (import.meta.env.VITE_API_BASE_URL || '').trim();
+const BASE_URL = RAW_URL
+  ? (RAW_URL.endsWith('/api') ? RAW_URL : `${RAW_URL.replace(/\/$/, '')}/api`)
+  : '/api';
 
 export async function fetchHealth(): Promise<{ status: string; service: string; version: string; studies_count: number }> {
   const res = await fetch(`${BASE_URL}/health`);
