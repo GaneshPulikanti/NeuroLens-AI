@@ -87,8 +87,8 @@ def create_new_study():
 @router.post("/studies/{study_id}/load-demo")
 def load_demo_into_study(study_id: str):
     study_path = settings.STUDIES_DIR / study_id
-    study_path.mkdir(parents=True, exist_ok=True)
-    mri_p, mask_p = create_synthetic_mni_case(study_path, case_name=f"case_{study_id}")
+    profile = "mild" if "mild" in study_id else ("severe" if "severe" in study_id else "moderate")
+    mri_p, mask_p = create_synthetic_mni_case(study_path, case_name=f"case_{study_id}", profile=profile)
     study_manager.clear_cache(study_id)
     return {
         "study_id": study_id,

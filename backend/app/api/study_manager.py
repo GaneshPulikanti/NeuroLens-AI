@@ -24,7 +24,8 @@ class StudyManager:
         ]
         for demo_id, case_prefix, profile in cases:
             demo_dir = self.studies_dir / demo_id
-            if not demo_dir.exists():
+            mri_files = list(demo_dir.glob("*T1w*.nii*")) if demo_dir.exists() else []
+            if not demo_dir.exists() or len(mri_files) == 0:
                 demo_dir.mkdir(parents=True, exist_ok=True)
                 create_synthetic_mni_case(demo_dir, case_name=case_prefix, profile=profile)
         return "demo_stroke_case_01"

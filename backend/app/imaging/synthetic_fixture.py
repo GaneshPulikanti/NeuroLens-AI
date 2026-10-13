@@ -93,8 +93,18 @@ def create_synthetic_mni_case(
     t1_data = np.zeros(shape, dtype=np.float32)
     t1_data[brain_mask] = rng.normal(loc=80.0, scale=12.0, size=np.sum(brain_mask))
 
-    lx, ly, lz = 67.0, 58.0, 42.0
-    lesion_dist = (((x - lx) / 12.0) ** 2 + ((y - ly) / 16.0) ** 2 + ((z - lz) / 14.0) ** 2)
+    # Profile-driven coordinates in 2mm MNI voxel space
+    if profile == "mild":
+        lx, ly, lz = 66.0, 70.0, 44.0
+        rx, ry, rz = 4.5, 5.5, 4.5
+    elif profile == "severe":
+        lx, ly, lz = 69.0, 50.0, 43.0
+        rx, ry, rz = 11.2, 14.0, 12.0
+    else:  # moderate default
+        lx, ly, lz = 68.0, 56.0, 45.0
+        rx, ry, rz = 9.2, 12.0, 10.0
+
+    lesion_dist = (((x - lx) / rx) ** 2 + ((y - ly) / ry) ** 2 + ((z - lz) / rz) ** 2)
     lesion_mask = (lesion_dist <= 1.0) & brain_mask
 
     t1_data[lesion_mask] = rng.normal(loc=30.0, scale=5.0, size=np.sum(lesion_mask))
