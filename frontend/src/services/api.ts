@@ -7,7 +7,13 @@ import {
   StudySummary,
 } from '../types';
 
-const RAW_URL = (import.meta.env.VITE_API_BASE_URL || '').trim();
+const RAW_URL = (
+  import.meta.env.VITE_API_BASE_URL ||
+  import.meta.env.VITE_BACKEND_URL ||
+  import.meta.env.VITE_API_URL ||
+  import.meta.env.VITE_SERVER_URL ||
+  ''
+).trim();
 const BASE_URL = RAW_URL
   ? (RAW_URL.endsWith('/api') ? RAW_URL : `${RAW_URL.replace(/\/$/, '')}/api`)
   : '/api';
