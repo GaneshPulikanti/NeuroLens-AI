@@ -343,6 +343,14 @@ export const MedicalImageViewer: React.FC<MedicalImageViewerProps> = ({
             </>
           )}
         </div>
+
+        {/* 2D Stack Acquisition Orientation Tip */}
+        {mriMeta.dimensions.z_axial > 1.8 * mriMeta.dimensions.x_sagittal && activePlane !== 'axial' && (
+          <div className="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-amber-950/90 border border-amber-600/60 rounded-full text-[11px] text-amber-200 flex items-center space-x-1.5 shadow-lg pointer-events-none z-20">
+            <Sliders className="w-3.5 h-3.5 text-amber-400 shrink-0" />
+            <span>2D Axial Scan Stack: Switch to <strong>Top (Axial)</strong> for high-resolution anatomical slices.</span>
+          </div>
+        )}
       </div>
 
       {/* Dedicated Clean Telemetry HUD Strip (Below Canvas, 100% visible, no overlay) */}
