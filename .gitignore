@@ -19,6 +19,7 @@ backend/data/isles/*
 !backend/data/isles/.gitkeep
 *.nii
 *.nii.gz
+!backend/app/imaging/mni_template_web.nii.gz
 *.dcm
 
 # System & IDE

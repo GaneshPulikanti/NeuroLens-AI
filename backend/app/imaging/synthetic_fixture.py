@@ -10,6 +10,7 @@ ICBM152_PATH = (
     / "mni_icbm152_nlin_sym_09a"
     / "mni_icbm152_t1_tal_nlin_sym_09a.nii.gz"
 )
+WEB_TEMPLATE_PATH = Path(__file__).resolve().parent / "mni_template_web.nii.gz"
 
 def create_synthetic_mni_case(
     output_dir: Path,
@@ -22,14 +23,22 @@ def create_synthetic_mni_case(
     mri_path = output_dir / f"{case_name}_T1w.nii.gz"
     mask_path = output_dir / f"{case_name}_lesion_mask.nii.gz"
 
-    # Check if authentic ICBM152 scientific standard template is available on disk
-    if ICBM152_PATH.exists():
-        real_t1 = nib.load(str(ICBM152_PATH))
-        # Downsample by 2x for fast, snappy web slicing (~98 x 116 x 94)
-        t1_raw = real_t1.get_fdata(dtype=np.float32)[::2, ::2, ::2]
-        orig_affine = real_t1.affine
-        new_affine = orig_affine.copy()
-        new_affine[:3, :3] *= 2.0
+    # Check if authentic ICBM152 / MNI scientific template is available on disk
+    template_path = None
+    if WEB_TEMPLATE_PATH.exists():
+        template_path = WEB_TEMPLATE_PATH
+    elif ICBM152_PATH.exists():
+        template_path = ICBM152_PATH
+
+    if template_path:
+        real_t1 = nib.load(str(template_path))
+        t1_raw = real_t1.get_fdata(dtype=np.float32)
+        if t1_raw.shape[0] > 150:
+            t1_raw = t1_raw[::2, ::2, ::2]
+            new_affine = real_t1.affine.copy()
+            new_affine[:3, :3] *= 2.0
+        else:
+            new_affine = real_t1.affine.copy()
 
         shape = t1_raw.shape
         x, y, z = np.mgrid[0:shape[0], 0:shape[1], 0:shape[2]]
